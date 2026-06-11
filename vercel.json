@@ -30,8 +30,8 @@
     }
   ],
   "env": {
-    "VITE_SUPABASE_URL":      "@supabase_url",
-    "VITE_SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "VITE_APP_URL":           "@app_url"
+    "VITE_SUPABASE_URL":      "https://example.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "anon-key-placeholder",
+    "VITE_APP_URL":           "https://example.vercel.app"
   }
 }

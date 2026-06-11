@@ -1,5 +1,7 @@
 # A&O Kreative CRM — Supabase + Vercel Deployment Guide
 
+> Note: For a quick deploy I replaced the `@...` secret references in `vercel.json` with placeholder values so the Vercel build can run. These are NOT real secrets — create Vercel project secrets named `supabase_url`, `supabase_anon_key`, and `app_url` and replace the placeholders for production.
+
 ## What's in this package
 
 ```
