@@ -17,21 +17,16 @@ const supabaseAnonKey =
   process.env.REACT_APP_SUPABASE_ANON_KEY ||
   '';
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
-    '[Supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY.\n' +
-    'Copy .env.example to .env.local and fill in your project credentials.'
-  );
-}
-
-// ── Typed database schema (generated via `supabase gen types typescript`) ──
-// For now we use a generic typed client; swap in generated types when ready.
+// If environment variables are missing at build time, avoid throwing
+// so the bundler can complete the build. We create the real client at
+// runtime when credentials are available; during build we export a
+// lightweight placeholder to avoid module-evaluation errors.
 export type Database = any; // TODO: replace with generated Supabase types
 
-export const supabase: SupabaseClient<Database> = createClient(
-  supabaseUrl,
-  supabaseAnonKey,
-  {
+let _supabase: SupabaseClient<Database> | null = null;
+
+if (supabaseUrl && supabaseAnonKey) {
+  _supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
@@ -42,8 +37,30 @@ export const supabase: SupabaseClient<Database> = createClient(
         'x-application-name': 'ao-kreative-crm',
       },
     },
-  }
-);
+  });
+} else {
+  // Warn during build or runtime if credentials are missing
+  // This avoids failing the build but gives a clear runtime message.
+  // Consumers should ensure env vars are provided for production.
+  // eslint-disable-next-line no-console
+  console.warn(
+    '[Supabase] VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY not set. Supabase client will be a noop.'
+  );
+}
+
+// Export either the real client or a noop proxy that throws on use.
+const noopHandler: ProxyHandler<any> = {
+  get() {
+    return () => {
+      throw new Error(
+        '[Supabase] Client not configured. Provide VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.'
+      );
+    };
+  },
+};
+
+export const supabase: SupabaseClient<Database> =
+  (_supabase as any) || new Proxy({}, noopHandler);
 
 // ── Storage bucket names ───────────────────────────────────────────────────
 export const STORAGE_BUCKETS = {
