@@ -1,0 +1,95 @@
+/* Sales Pipeline */
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.pipeline-column {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  min-height: 600px;
+  border: 2px dashed #ddd;
+  transition: background 0.2s ease;
+}
+
+.pipeline-column:hover {
+  background: #f5f5f5;
+}
+
+.column-title {
+  margin: 0 0 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.column-count {
+  background: #667eea;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
+}
+
+.column-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lead-card {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: move;
+  transition: all 0.2s ease;
+  border-left: 4px solid #667eea;
+}
+
+.lead-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.lead-card h4 {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #333;
+}
+
+.lead-card p {
+  margin: 3px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.lead-card .email {
+  color: #667eea;
+  font-size: 11px;
+}
+
+.lead-footer {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 12px;
+}

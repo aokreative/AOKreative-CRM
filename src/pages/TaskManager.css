@@ -1,0 +1,141 @@
+/* Task Manager Page */
+.task-toolbar {
+  margin-bottom: 25px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  border-left: 4px solid #667eea;
+  transition: all 0.2s ease;
+}
+
+.task-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.task-item.completed {
+  opacity: 0.6;
+  background: #f9f9f9;
+  border-left-color: #ccc;
+}
+
+.task-item.completed .task-content h4 {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.task-checkbox {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.task-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-content h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  color: #333;
+}
+
+.task-content p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.task-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.due-date,
+.assigned {
+  color: #999;
+}
+
+.task-status {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.status-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-label.status-pending {
+  background: #fff3e0;
+  color: #f57f17;
+}
+
+.status-label.status-completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-label.status-overdue {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+@media (max-width: 768px) {
+  .task-item {
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .task-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

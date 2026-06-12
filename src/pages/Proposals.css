@@ -1,0 +1,102 @@
+/* Proposals Page */
+.proposals-toolbar {
+  margin-bottom: 25px;
+}
+
+.proposals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.proposal-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.2s ease;
+  border-top: 4px solid #667eea;
+}
+
+.proposal-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.proposal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.proposal-header h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+  flex: 1;
+}
+
+.proposal-body {
+  margin-bottom: 15px;
+}
+
+.client-name {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.proposal-amount {
+  font-size: 24px;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.proposal-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.proposal-dates small {
+  color: #999;
+  font-size: 12px;
+}
+
+.proposal-actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.proposal-actions button {
+  flex: 1;
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.proposal-actions button:hover {
+  background: #667eea;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .proposals-grid {
+    grid-template-columns: 1fr;
+  }
+}
